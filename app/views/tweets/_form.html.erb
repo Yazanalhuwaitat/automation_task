@@ -1,0 +1,25 @@
+<% if @tweet.errors.any? %>
+  <h2>The following errors prevented the tweet from being saved:</h2>
+  <ul>
+    <% @tweet.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @tweet, local: true) do |f| %>
+  <p>
+    <%= f.label :username %><br/>
+    <%= f.text_field :username %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br/>
+    <%= f.text_field :password %> 
+  </p>
+
+  <p><strong><%= f.submit %></strong></p>
+  <strong><%= link_to 'Back', tweets_path %></strong>
+
+
+<% end %>
